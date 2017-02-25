@@ -9,9 +9,16 @@ type Salutation struct{
 	greeting string
 }
 
+const (
+	A = iota
+	B
+	C
+)
+
 func main() {
 	
 	var s = Salutation{name:"Neal", greeting:"Hello"}
+	s.name = "Y"
 
-	fmt.Println(s.greeting, ",", s.name)
+	fmt.Println(A, B, C)
 }
