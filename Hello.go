@@ -4,12 +4,14 @@ import (
 	"fmt"
 )
 
+type Salutation struct{
+	name string
+	greeting string
+}
+
 func main() {
-	message := "Hello Go world"
+	
+	var s = Salutation{name:"Neal", greeting:"Hello"}
 
-	greeting  := &message
-
-	*greeting = "Hi"
-
-	fmt.Println(message, *greeting)
+	fmt.Println(s.greeting, ",", s.name)
 }
