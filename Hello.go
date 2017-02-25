@@ -5,9 +5,11 @@ import (
 )
 
 func main() {
-	 message := "Hello Go world"
+	message := "Hello Go world"
 
-	var greeting *string = &message
+	greeting  := &message
+
+	*greeting = "Hi"
 
 	fmt.Println(message, *greeting)
 }
