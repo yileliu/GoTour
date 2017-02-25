@@ -5,10 +5,9 @@ import (
 )
 
 func main() {
-	var message string
-	message = "Hello Go world"
+	var message = "Hello Go world"
 
-	var a, b, c = 1, 2, 3
+	var a, b, c = 1, false, 3
 
 	fmt.Println(message, a, b, c)
 }
