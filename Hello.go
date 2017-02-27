@@ -15,24 +15,33 @@ const (
 	C
 )
 
-func Greet(salutation Salutation) {
-	message, alternate := CreateMessage(salutation.name, salutation.greeting);
+func Greet(salutation Salutation, do func(string)) {
+	message, alternate := CreateMessage(salutation.name, salutation.greeting, "yo");
 	
-	fmt.Println(message)
-	fmt.Println(alternate)
+	do(message)
+	do(alternate)
 }
 
-func CreateMessage(name, greeting string) (message string, alternate string) {
-	message = greeting + " " + name
+func CreateMessage(name string, greeting ...string) (message string, alternate string) {
+	fmt.Println(len(greeting))
+	message = greeting[1] + " " + name
 	alternate = "HEY! " + name
 	return
+}
+
+func Print(s string) {
+	fmt.Print(s)
+}
+
+func PrintLine(s string) {
+	fmt.Println(s)
 }
 
 func main() {
 	
 	var s = Salutation{name: "Neal", greeting: "Hello"}
 
-	Greet(s)
+	Greet(s, PrintLine)
 }
 
 
