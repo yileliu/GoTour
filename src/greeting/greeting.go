@@ -4,6 +4,11 @@ import (
 	"fmt"
 )
 
+
+type Renamable interface{
+	Rename(newName string)
+}
+
 type Salutation struct{
 	Name string
 	Greeting string
@@ -13,15 +18,17 @@ func (salutation *Salutation) Rename(newName string) {
 	salutation.Name = newName
 }
 
+func (salutation *Salutation) Write(p []byte)(n int, err error) {
+	s := string(p)
+	salutation.Rename(s)
+	n = len(s)
+	err = nil
+	return
+}
+
 type Salutations []Salutation
 
 type Printer func(string) ()
-
-const (
-	A = iota
-	B
-	C
-)
 
 func (salutations Salutations) Greet( do Printer, isFormal bool, times int) {
 	for _, s := range salutations {

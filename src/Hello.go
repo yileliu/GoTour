@@ -1,7 +1,10 @@
 package main
 
-import ("greeting")
+import ("greeting"; "fmt")
 
+func RenameToFrog(r greeting.Renamable) {
+	r.Rename("Frog")
+}
 
 func main() {
 	var s []int
@@ -21,7 +24,8 @@ func main() {
 
 	//slice = slice[:2]
 	salutations[0].Rename("John")
-
+	RenameToFrog(&salutations[1])
+	fmt.Fprintf(&salutations[2], "The count is %d", 10)
 	salutations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
 	greeting.TypeSwitchTest("Bob")
 
