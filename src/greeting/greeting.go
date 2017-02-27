@@ -20,10 +20,25 @@ const (
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting);
 
-	if prefix := "Mr "; isFormal{
+	if prefix := GetPrefix(salutation.Name); isFormal{
 		do(prefix + message)
+	} else{
+		do(alternate)
 	}
-	do(alternate)
+}
+
+func GetPrefix(name string)(prefix string) {
+	switch {
+		case name == "Bob": 
+			prefix = "Mr "
+		case name == "Joe", name == "Amy", len(name) == 10: 
+			prefix = "Dr "
+		case name == "Mary": 
+			prefix = "Miss "
+		default: prefix = "Dude"
+	}
+
+	return
 }
 
 func CreateMessage(name, greeting string) (message string, alternate string) {

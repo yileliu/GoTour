@@ -5,7 +5,7 @@ import "./greeting"
 
 func main() {
 	
-	var s = greeting.Salutation{"Neal", "Hello"}
+	var s = greeting.Salutation{"Amy", "Hello"}
 
 	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), true)
 }
