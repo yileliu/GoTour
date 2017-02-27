@@ -18,7 +18,7 @@ const (
 )
 
 func Greet(salutation Salutation, do Printer, isFormal bool) {
-	message, alternate := CreateMessage(salutation.Name, salutation.Greeting);
+	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
 
 	if prefix := GetPrefix(salutation.Name); isFormal{
 		do(prefix + message)
@@ -39,6 +39,20 @@ func GetPrefix(name string)(prefix string) {
 	}
 
 	return
+}
+
+func TypeSwitchTest(x interface{}) {
+	switch x.(type){
+		case int:
+			fmt.Println("int")
+		case string:
+			fmt.Println("string")
+		case Salutation:
+			fmt.Println("Salutation")
+		default: 
+			fmt.Println("Unknown")
+	}
+	
 }
 
 func CreateMessage(name, greeting string) (message string, alternate string) {
