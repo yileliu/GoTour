@@ -9,6 +9,12 @@ type Salutation struct{
 	Greeting string
 }
 
+func (salutation *Salutation) Rename(newName string) {
+	salutation.Name = newName
+}
+
+type Salutations []Salutation
+
 type Printer func(string) ()
 
 const (
@@ -17,8 +23,8 @@ const (
 	C
 )
 
-func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
-	for _, s := range salutation{
+func (salutations Salutations) Greet( do Printer, isFormal bool, times int) {
+	for _, s := range salutations {
 		message, alternate := CreateMessage(s.Name, s.Greeting)
 
 		if prefix := GetPrefix(s.Name); isFormal{

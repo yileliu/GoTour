@@ -9,19 +9,20 @@ func main() {
 	s[0] = 1
 
 
-	slice := []greeting.Salutation{
+	salutations := greeting.Salutations{
 		{"Bob", "Hello"},
 		{"Joe", "Hi"},
 		{"Amy", "What's up?"},
 	}
 
-	slice = append(slice, greeting.Salutation{"Frank", "Ho"})
-	slice = append(slice[:1], slice[2:]...)
+	salutations = append(salutations, greeting.Salutation{"Frank", "Ho"})
+	salutations = append(salutations[:1], salutations[2:]...)
 
 
 	//slice = slice[:2]
+	salutations[0].Rename("John")
 
-	greeting.Greet(slice, greeting.CreatePrintFunction("!!!"), true, 5)
+	salutations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
 	greeting.TypeSwitchTest("Bob")
 
 }
