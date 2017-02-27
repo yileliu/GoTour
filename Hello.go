@@ -15,10 +15,16 @@ const (
 	C
 )
 
+func Greet(salutation Salutation) {
+	fmt.Println(salutation.name)
+	fmt.Println(salutation.greeting)
+}
+
 func main() {
 	
-	var s = Salutation{name:"Neal", greeting:"Hello"}
-	s.name = "Y"
+	var s = Salutation{name: "Neal", greeting: "Hello"}
 
-	fmt.Println(A, B, C)
+	Greet(s)
 }
+
+
