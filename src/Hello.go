@@ -7,7 +7,7 @@ func main() {
 	
 	var s = greeting.Salutation{"Neal", "Hello"}
 
-	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), false)
+	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), true)
 }
 
 
