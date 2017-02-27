@@ -17,18 +17,16 @@ const (
 	C
 )
 
-func Greet(salutation Salutation, do Printer, isFormal bool, times int) {
-	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
+func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
+	for _, s := range salutation{
+		message, alternate := CreateMessage(s.Name, s.Greeting)
 
-	i := 0
-	for  i < times {
-		if prefix := GetPrefix(salutation.Name); isFormal{
+		if prefix := GetPrefix(s.Name); isFormal{
 			do(prefix + message)
 		} else{
 			do(alternate)
 		}
 
-		i++ 
 	}
 }
 
