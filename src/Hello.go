@@ -1,6 +1,10 @@
 package main
 
-import ("greeting"; "fmt")
+import (
+	"greeting"
+	"fmt"
+	"time"
+)
 
 func RenameToFrog(r greeting.Renamable) {
 	r.Rename("Frog")
@@ -26,8 +30,12 @@ func main() {
 	salutations[0].Rename("John")
 	RenameToFrog(&salutations[1])
 	fmt.Fprintf(&salutations[2], "The count is %d", 10)
+
+	go salutations.Greet(greeting.CreatePrintFunction("???"), true, 5)
 	salutations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
 	greeting.TypeSwitchTest("Bob")
+
+	time.Sleep(100 * time.Millisecond)
 
 }
 
