@@ -16,13 +16,16 @@ const (
 )
 
 func Greet(salutation Salutation) {
-	_, alternate := CreateMessage(salutation.name, salutation.greeting);
+	message, alternate := CreateMessage(salutation.name, salutation.greeting);
 	
+	fmt.Println(message)
 	fmt.Println(alternate)
 }
 
-func CreateMessage(name, greeting string) (string, string) {
-	return greeting + " " + name, "HEY! " + name
+func CreateMessage(name, greeting string) (message string, alternate string) {
+	message = greeting + " " + name
+	alternate = "HEY! " + name
+	return
 }
 
 func main() {
