@@ -31,17 +31,16 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 }
 
 func GetPrefix(name string)(prefix string) {
-	switch {
-		case name == "Bob": 
-			prefix = "Mr "
-		case name == "Joe", name == "Amy", len(name) == 10: 
-			prefix = "Dr "
-		case name == "Mary": 
-			prefix = "Miss "
-		default: prefix = "Dude"
-	}
+	var prefixMap map[string]string
 
-	return
+	prefixMap = make(map[string]string)
+
+	prefixMap["Bob"] = "Mr "
+	prefixMap["Joe"] = "Dr "
+	prefixMap["Amy"] = "Dr "
+	prefixMap["Mary"] = "Miss "
+
+	return prefixMap[name]
 }
 
 func TypeSwitchTest(x interface{}) {
@@ -66,7 +65,7 @@ func CreateMessage(name, greeting string) (message string, alternate string) {
 
 func CreatePrintFunction(custom string) Printer {
 	return func(s string){
-		fmt.Println(s, custom)
+		fmt.Println(s + custom)
 	}
 }
 
